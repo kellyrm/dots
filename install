@@ -1,6 +1,15 @@
 #!/bin/sh
-ln -s .config/i3/config ~/.config/i3/config
-ln -s .config/i3status/config ~/.config/i3status/config
-ln -s .vimrc ~/.vimrc
-ln -s .config/ranger/rc.conf ~/.config/ranger/rc.conf
-ln -s .lesskey ~/.lesskey
+
+INSTALL() {
+	src=$(pwd)/$1
+	dst=~/$1
+	dir=$(dirname $dst)
+	rm -f $dst
+	mkdir -p $dir
+	ln -s $src $dst	
+}
+
+INSTALL ".vimrc"
+INSTALL ".lesskey"
+INSTALL ".config/i3/config"
+INSTALL ".config/ranger/rc.conf"
