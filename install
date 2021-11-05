@@ -1,5 +1,11 @@
 #!/bin/sh
 
+GENERATE() {
+  dst=$1
+  src=$1.m4
+  m4 -I examples $src > $dst
+}
+
 INSTALL() {
 	src=$(pwd)/$1
 	dst=~/$1
@@ -14,3 +20,6 @@ INSTALL ".lesskey"
 INSTALL ".config/i3/config"
 INSTALL ".config/ranger/rc.conf"
 INSTALL ".config/kitty/kitty.conf"
+
+GENERATE ".config/i3status/config"
+INSTALL ".config/i3status/config"

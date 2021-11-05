@@ -55,6 +55,3 @@ set clipboard=unnamed
 
 set viminfo='100,<9999,s100
 
-
-execute pathogen#infect()
-
