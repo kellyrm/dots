@@ -17,6 +17,7 @@ INSTALL() {
 
 INSTALL ".vimrc"
 INSTALL ".lesskey"
+INSTALL ".tmux.conf"
 INSTALL ".config/i3/config"
 INSTALL ".config/ranger/rc.conf"
 INSTALL ".config/kitty/kitty.conf"
