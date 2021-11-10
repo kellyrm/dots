@@ -1,14 +1,10 @@
- 
- 
- 
-
-
 general {
         output_format = "i3bar"
         colors = true
         interval = 5
 }
 
+order += "read_file note"
 order += "ipv6"
 order += "wireless wlp58s0"
 order += "ethernet enp57s0u1u2"
@@ -61,4 +57,9 @@ memory {
 
 disk "/" {
         format = "%free"
+}
+
+read_file note {
+        path = "/home/kelly/note"
+        format_bad = ""
 }
