@@ -15,6 +15,7 @@ INSTALL() {
 	ln -s $src $dst	
 }
 
+INSTALL ".zshrc"
 INSTALL ".vimrc"
 INSTALL ".lesskey"
 INSTALL ".tmux.conf"
