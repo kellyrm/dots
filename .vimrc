@@ -125,7 +125,3 @@ set smartcase
 
 " use system clipboard
 set clipboard=unnamed
-
-" python time
-py3f ~/vim.py
-
