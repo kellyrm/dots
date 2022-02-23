@@ -65,8 +65,9 @@ gaps inner 15
 default_border none
 
 exec-always setxkbmap dvp -option caps:escape
-exec ~/.fehbg
 exec picom -b
+exec "~/detect && sleep 1 && ~/.fehbg"
+exec_always ~/.fehbg
 
 bindsym $mod+u move workspace to output right
 bindsym $mod+Shift+m exec /home/kelly/detect
@@ -177,10 +178,10 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $wsq "Q"
-set $wsw "W"
+set $wsq ":"
+set $wsw ","
 set $wsa "A"
-set $wss "S"
+set $wss "O"
 
 set $key1 ampersand
 set $key2 bracketleft
