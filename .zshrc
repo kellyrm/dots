@@ -1,6 +1,8 @@
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
 
+export EDITOR=/usr/bin/vim
+
 bindkey -v
 bindkey -a "h" vi-backward-char
 bindkey -a "t" down-line-or-history
