@@ -12,9 +12,10 @@ INSTALL() {
 	dir=$(dirname $dst)
 	rm -f $dst
 	mkdir -p $dir
-	ln -s $src $dst	
+	ln -s $src $dst
 }
 
+INSTALL ".xinitrc"
 INSTALL ".vimrc"
 INSTALL ".lesskey"
 INSTALL ".zshrc"
