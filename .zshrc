@@ -1,5 +1,6 @@
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
+alias ls="ls --color=auto"
 
 export EDITOR=/usr/bin/vim
 
@@ -10,6 +11,8 @@ bindkey -a "n" up-line-or-history
 bindkey -a "s" vi-forward-char
 bindkey -a "l" vi-repeat-search
 bindkey -a "L" vi-rev-repeat-search
+
+zle -A accept-line w
 
 autoload -U compinit; compinit
 
