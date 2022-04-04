@@ -12,16 +12,18 @@ INSTALL() {
 	dir=$(dirname $dst)
 	rm -f $dst
 	mkdir -p $dir
-	ln -s $src $dst	
+	ln -s $src $dst
 }
 
-INSTALL ".zshrc"
+INSTALL ".xinitrc"
 INSTALL ".vimrc"
 INSTALL ".lesskey"
+INSTALL ".zshrc"
 INSTALL ".tmux.conf"
 INSTALL ".config/i3/config"
 INSTALL ".config/ranger/rc.conf"
 INSTALL ".config/kitty/kitty.conf"
+INSTALL ".config/picom/picom.conf"
 
 GENERATE ".config/i3status/config"
 INSTALL ".config/i3status/config"

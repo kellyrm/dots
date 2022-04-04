@@ -1,0 +1,3 @@
+define(`WAN', wlp58s0)
+define(`ETH', enp57s0u1u2)
+define(`BAT')

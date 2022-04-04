@@ -7,12 +7,12 @@ general {
 }
 
 order += "ipv6"
-order += "wireless WAN"
-order += "ethernet ETH"
+ifdef(`WAN', order += "wireless WAN")
+ifdef(`ETH', order += "ethernet ETH")
+ifdef(`EXT', order += "ethernet EXT")
 order += "disk /"
-ifdef(`BAT', 
-`order += "battery 0"'
-)
+ifdef(`HOM', order += "disk /home")
+ifdef(`BAT', order += "battery 0")
 order += "memory"
 order += "load"
 order += "tztime local"
@@ -27,17 +27,21 @@ ethernet ETH {
         format_down = "E: down"
 }
 
-ifdef(`BAT', 
-`battery 0 {
+ethernet EXT {
+        format_up = "X: %ip (%speed)"
+        format_down = "X: down"
+}
+
+battery 0 {
         format = "%status %percentage %remaining %emptytime"
         format_down = "No battery"
         status_chr = "CHR"
-        status_bat = "BAT"
+        status_bat = "`BAT'"
         status_unk = "UNK"
         status_full = "FULL"
         path = "/sys/class/power_supply/`BAT'%d/uevent"
         low_threshold = 10
-}')
+}
 
 tztime local {
         format = "%Y-%m-%d %H:%M"
@@ -59,5 +63,9 @@ memory {
 }
 
 disk "/" {
+        format = "/ %free"
+}
+
+disk "/home" {
         format = "%free"
 }
