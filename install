@@ -27,3 +27,6 @@ INSTALL ".config/picom/picom.conf"
 
 GENERATE ".config/i3status/config"
 INSTALL ".config/i3status/config"
+
+INSTALL ".config/Code/User/settings.json"
+INSTALL ".config/Code/User/keybindings.json"
