@@ -17,7 +17,6 @@ INSTALL() {
 
 INSTALL ".xinitrc"
 INSTALL ".vimrc"
-INSTALL ".lesskey"
 INSTALL ".zshrc"
 INSTALL ".tmux.conf"
 INSTALL ".config/i3/config"
@@ -27,6 +26,9 @@ INSTALL ".config/picom/picom.conf"
 
 GENERATE ".config/i3status/config"
 INSTALL ".config/i3status/config"
+
+INSTALL ".lesskey"
+command -v lesskey &> /dev/null && lesskey &> /dev/null
 
 INSTALL ".config/Code/User/settings.json"
 INSTALL ".config/Code/User/keybindings.json"
