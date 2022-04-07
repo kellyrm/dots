@@ -1,7 +1,7 @@
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
 alias ls="ls --color=auto"
-alias less="less -i -j.5"
+alias less="less -i"
 
 export EDITOR=/usr/bin/vim
 
