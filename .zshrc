@@ -15,6 +15,7 @@ bindkey -a "L" vi-rev-repeat-search
 
 # allow :w
 zle -A accept-line w
+zle -A accept-line x
 
 setopt HIST_IGNORE_ALL_DUPS
 

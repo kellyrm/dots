@@ -1,4 +1,5 @@
 {
+    "editor.acceptSuggestionOnCommitCharacter": false,
     "workbench.startupEditor": "none",
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
