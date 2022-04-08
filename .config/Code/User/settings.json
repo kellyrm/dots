@@ -125,4 +125,5 @@
     ],
     "git.confirmSync": false,
     "zenMode.hideLineNumbers": false,
+    "csharp.suppressDotnetInstallWarning": true,
 }
