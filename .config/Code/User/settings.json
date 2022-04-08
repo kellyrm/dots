@@ -1,4 +1,5 @@
 {
+    "editor.acceptSuggestionOnCommitCharacter": false,
     "workbench.startupEditor": "none",
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -112,7 +113,6 @@
             "filenamePattern": "*.ipynb"
         }
     ,
-    // "editor.minimap.enabled": false,
     "editor.cursorStyle": "line",
     "editor.lineNumbers": "relative",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
@@ -125,5 +125,5 @@
     ],
     "git.confirmSync": false,
     "zenMode.hideLineNumbers": false,
-    "csharp.suppressDotnetInstallWarning": true,
+    "csharp.suppressDotnetInstallWarning": true
 }
