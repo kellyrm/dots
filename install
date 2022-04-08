@@ -28,7 +28,7 @@ GENERATE ".config/i3status/config"
 INSTALL ".config/i3status/config"
 
 INSTALL ".lesskey"
-command -v lesskey &> /dev/null && lesskey &> /dev/null
+command -v lesskey && lesskey &> /dev/null
 
 INSTALL ".config/Code/User/settings.json"
 INSTALL ".config/Code/User/keybindings.json"
