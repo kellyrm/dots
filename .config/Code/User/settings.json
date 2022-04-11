@@ -125,5 +125,8 @@
     ],
     "git.confirmSync": false,
     "zenMode.hideLineNumbers": false,
-    "csharp.suppressDotnetInstallWarning": true
+    "csharp.suppressDotnetInstallWarning": true,
+    "vim.wrapscan": false,
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false
 }
