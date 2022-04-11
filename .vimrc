@@ -122,6 +122,7 @@ set incsearch
 " match case if search contains upper case
 set ignorecase
 set smartcase
+set nowrapscan
 
 " use system clipboard
 set clipboard=unnamed
