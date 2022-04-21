@@ -37,3 +37,5 @@ autoload -U compinit; compinit
 PROMPT='%(1j.%F{blue}[%j]%f.)[%F{cyan}%y%f][%F{green}%~%f]%(?..(%F{red}%?%f%))
 %B%n@%m %#%b '
 
+[ -z $CHROOT ] || PROMPT="[chroot]$PROMPT"
+
