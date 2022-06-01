@@ -1,1 +1,0 @@
-/home/kelly/dots/.xinitrc

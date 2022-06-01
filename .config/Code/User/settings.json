@@ -129,5 +129,9 @@
     "vim.wrapscan": false,
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,
-    "window.menuBarVisibility": "hidden"
+    "window.menuBarVisibility": "hidden",
+    "omnisharp.useGlobalMono": "always",
+    "extensions.ignoreRecommendations": true,
+    "update.mode": "none",
+    "window.zoomLevel": -1
 }

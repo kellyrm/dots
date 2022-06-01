@@ -30,7 +30,7 @@ setopt ALWAYS_TO_END
 
 # from oh-my-zsh
 # allows completion of imcomplete words
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 autoload -U compinit; compinit
 

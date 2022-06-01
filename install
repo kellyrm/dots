@@ -7,9 +7,9 @@ GENERATE() {
 }
 
 INSTALL() {
-	src=$(pwd)/$1
-	dst=~/$1
-	dir=$(dirname $dst)
+	src="$(pwd)/$1"
+	dst="$HOME/$1"
+	dir="$(dirname $dst)"
 	rm -f $dst
 	mkdir -p $dir
 	ln -s $src $dst
@@ -23,6 +23,7 @@ INSTALL ".config/i3/config"
 INSTALL ".config/ranger/rc.conf"
 INSTALL ".config/kitty/kitty.conf"
 INSTALL ".config/picom/picom.conf"
+INSTALL ".config/zathura/zathurarc"
 
 GENERATE ".config/i3status/config"
 INSTALL ".config/i3status/config"
