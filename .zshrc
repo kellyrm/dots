@@ -18,6 +18,7 @@ zle -A accept-line w
 zle -A accept-line x
 
 setopt HIST_IGNORE_ALL_DUPS
+setopt AUTO_CD
 
 # completion
 unsetopt MENU_COMPLETE
