@@ -1,0 +1,15 @@
+map h scroll left
+map t scroll down
+map n scroll up
+map s scroll right
+
+map H scroll half-left
+map T scroll half-down
+map N scroll half-up
+map S scroll half-right
+
+map f scroll next
+map b scroll previous
+
+map i zoom in
+map o zoom out

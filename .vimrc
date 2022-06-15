@@ -12,15 +12,15 @@ noremap t <down>
 noremap n <up>
 noremap s <right>
 " window movement
-noremap <C-W>h :winc h<Enter>
-noremap <C-W>s :winc l<Enter>
+noremap <C-H> :winc h<Enter>
+noremap <C-S> :winc l<Enter>
 noremap <C-W>t :winc j<Enter>
 noremap <C-W>n :winc k<Enter>
 " window moving
 noremap <C-W>H :winc H<Enter>
 noremap <C-W>S :winc L<Enter>
-noremap <C-W>T :winc J<Enter>
-noremap <C-W>N :winc K<Enter>
+noremap <C-W>t :winc J<Enter>
+noremap <C-W>n :winc K<Enter>
 " fast movement
 noremap T 10j
 noremap N 10k
@@ -28,10 +28,10 @@ noremap N 10k
 noremap l n
 noremap L N
 " tabs
-noremap <C-S> :+tabnext<Enter>
-noremap <C-H> :-tabnext<Enter>
-noremap <C-T> :winc h<Enter>
-noremap <C-N> :winc l<Enter>
+noremap <C-T> :+tabnext<Enter>
+noremap <C-N> :-tabnext<Enter>
+" noremap <C-T> :winc h<Enter>
+" noremap <C-N> :winc l<Enter>
 " reload
 noremap <C-R> :Reload<Enter>:nohl<Enter>
 
@@ -86,11 +86,16 @@ set shiftround
 " ===================
 " SETTINGS
 " ==================
+
+" tab complete
+set wildmode=longest,list,full
+set wildmenu
+
 " allow more tabs
 set tabpagemax=99
 
 " number of lines to keep around the cursor
-set scrolloff=15
+set scrolloff=5
 
 " indicates fast tty connection
 set ttyfast
@@ -122,6 +127,7 @@ set incsearch
 " match case if search contains upper case
 set ignorecase
 set smartcase
+set nowrapscan
 
 " use system clipboard
 set clipboard=unnamed

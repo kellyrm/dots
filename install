@@ -7,21 +7,29 @@ GENERATE() {
 }
 
 INSTALL() {
-	src=$(pwd)/$1
-	dst=~/$1
-	dir=$(dirname $dst)
+	src="$(pwd)/$1"
+	dst="$HOME/$1"
+	dir="$(dirname $dst)"
 	rm -f $dst
 	mkdir -p $dir
-	ln -s $src $dst	
+	ln -s $src $dst
 }
 
+INSTALL ".xinitrc"
 INSTALL ".vimrc"
-INSTALL ".lesskey"
 INSTALL ".zshrc"
 INSTALL ".tmux.conf"
 INSTALL ".config/i3/config"
 INSTALL ".config/ranger/rc.conf"
 INSTALL ".config/kitty/kitty.conf"
+INSTALL ".config/picom/picom.conf"
+INSTALL ".config/zathura/zathurarc"
 
 GENERATE ".config/i3status/config"
 INSTALL ".config/i3status/config"
+
+INSTALL ".lesskey"
+command -v lesskey && lesskey &> /dev/null
+
+INSTALL ".config/Code/User/settings.json"
+INSTALL ".config/Code/User/keybindings.json"
