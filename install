@@ -15,6 +15,16 @@ INSTALL() {
 	ln -s $src $dst
 }
 
+INSTALL_DIR() {
+    src="$(pwd)/$1"
+    dst="$HOME/$2"
+    if [ -e $dst ] ; then
+        echo $dst exists
+    else
+        ln -sT $src $dst
+    fi
+}
+
 INSTALL ".xinitrc"
 INSTALL ".vimrc"
 INSTALL ".zshrc"
@@ -33,3 +43,6 @@ command -v lesskey && lesskey &> /dev/null
 
 INSTALL ".config/Code/User/settings.json"
 INSTALL ".config/Code/User/keybindings.json"
+
+INSTALL .emacs
+INSTALL_DIR emacs_pkg .emacs.d/pkg

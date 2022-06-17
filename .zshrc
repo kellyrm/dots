@@ -2,6 +2,8 @@ alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
 alias ls="ls --color=auto"
 alias less="less -i"
+alias ec="emacsclient -t"
+alias emacs="emacs -nw"
 
 export EDITOR=/usr/bin/vim
 
