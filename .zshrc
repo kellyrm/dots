@@ -1,3 +1,5 @@
+[ -f ~/.localenv ] && source ~/.localenv
+
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
 alias ls="ls --color=auto"
@@ -37,8 +39,10 @@ setopt ALWAYS_TO_END
 
 autoload -U compinit; compinit
 
-PROMPT='%(1j.%F{blue}[%j]%f.)[%F{cyan}%y%f][%F{green}%~%f]%(?..(%F{red}%?%f%))
-%B%n@%m %#%b '
+[ -z $HOST_COLOR ] && HOST_COLOR=white
+
+PROMPT="%(1j.%F{blue}[%j]%f.)[%F{cyan}%y%f][%F{green}%~%f]%(?..(%F{red}%?%f%))
+%B%n@%F{$HOST_COLOR}%m%f %#%b "
 
 [ "$USER" = "root" ] && [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ] && export CHROOT=yes
 
