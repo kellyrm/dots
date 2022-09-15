@@ -42,5 +42,7 @@ autoload -U compinit; compinit
 PROMPT='%(1j.%F{blue}[%j]%f.)[%F{cyan}%y%f][%F{green}%~%f]%(?..(%F{red}%?%f%))
 %B%n@%m %#%b '
 
-[ -z $CHROOT ] || PROMPT="[chroot]$PROMPT"
+[ "$USER" = "root" ] && [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ] && export CHROOT=yes
+
+[ -z $CHROOT ] || PROMPT="[%F{red}chroot%f]$PROMPT"
 
