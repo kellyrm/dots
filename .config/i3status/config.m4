@@ -1,11 +1,16 @@
 include(`local.m4')
 
+# #############################################################
+# WARNING!!!!! THIS FILE IS GENERATED FROM M4 TEMPLATE !!!!!!!!
+# #############################################################
+
 general {
         output_format = "i3bar"
         colors = true
         interval = 5
 }
 
+order += "read_file spotify"
 order += "ipv6"
 ifdef(`WAN', order += "wireless WAN")
 ifdef(`ETH', order += "ethernet ETH")
@@ -18,7 +23,7 @@ order += "load"
 order += "tztime local"
 
 wireless WAN {
-        format_up = "W: %ip (%quality at %essid, %bitrate)"
+        format_up = "W: %ip (%essid %quality, %frequency %bitrate)"
         format_down = "W: down"
 }
 
@@ -68,4 +73,14 @@ disk "/" {
 
 disk "/home" {
         format = "%free"
+}
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 5
+}
+
+read_file spotify {
+    path = ~/.spotify_status
+    color_good = "#FFFFFF"
 }

@@ -5,7 +5,6 @@ set nocompatible
 " ==================
 " unbind default up/down
 map j <Nop>
-map k <Nop>
 " dvorak movement
 noremap h <left>
 noremap t <down>
@@ -22,11 +21,15 @@ noremap <C-W>S :winc L<Enter>
 noremap <C-W>t :winc J<Enter>
 noremap <C-W>n :winc K<Enter>
 " fast movement
-noremap T 10j
-noremap N 10k
+noremap H ^
+noremap T <C-F>
+noremap N <C-B>
+noremap S $
 " rebind search
 noremap l n
 noremap L N
+noremap k t
+noremap K T
 " tabs
 noremap <C-T> :+tabnext<Enter>
 noremap <C-N> :-tabnext<Enter>

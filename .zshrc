@@ -1,9 +1,11 @@
+alias kty='i3-msg "exec --no-startup-id kitty -1 --instance-group i3 -d $(pwd)"'
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
 alias ls="ls --color=auto"
 alias less="less -i"
 alias ec="emacsclient -t"
 alias emacs="emacs -nw"
+alias st-prog="st-flash --format ihex write"
 
 export EDITOR=/usr/bin/vim
 

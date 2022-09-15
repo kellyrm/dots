@@ -1,3 +1,27 @@
 [submodule "emacs_pkg/evil"]
 	path = emacs_pkg/evil
 	url = https://github.com/emacs-evil/evil.git
+[submodule "emacs_pkg/consult"]
+	path = emacs_pkg/consult
+	url = https://github.com/minad/consult
+[submodule "emacs_pkg/flx"]
+	path = emacs_pkg/flx
+	url = https://github.com/lewang/flx
+[submodule "emacs_pkg/emacs-corfu-terminal"]
+	path = emacs_pkg/corfu-terminal
+	url = https://codeberg.org/akib/emacs-corfu-terminal
+[submodule "emacs_pkg/corfu"]
+	path = emacs_pkg/corfu
+	url = https://github.com/minad/corfu
+[submodule "emacs_pkg/popon"]
+	path = emacs_pkg/popon
+	url = https://codeberg.org/akib/emacs-popon
+[submodule "emacs_pkg/gtags-mode"]
+	path = emacs_pkg/gtags-mode
+	url = https://github.com/Ergus/gtags-mode
+[submodule "emacs_pkg/vertico"]
+	path = emacs_pkg/vertico
+	url = https://github.com/minad/vertico
+[submodule "emacs_pkg/orderless"]
+	path = emacs_pkg/orderless
+	url = https://github.com/oantolin/orderless
