@@ -2,3 +2,5 @@ t   forw-line
 n   back-line
 l   repeat-search
 L   reverse-search
+T   forw-screen
+N   back-screen

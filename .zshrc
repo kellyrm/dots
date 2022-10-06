@@ -1,4 +1,7 @@
+[ -f ~/.localenv ] && source ~/.localenv
+
 alias kty='i3-msg "exec --no-startup-id kitty -1 --instance-group i3 -d $(pwd)"'
+
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
 alias ls="ls --color=auto"
@@ -16,6 +19,8 @@ bindkey -a "n" up-line-or-history
 bindkey -a "s" vi-forward-char
 bindkey -a "l" vi-repeat-search
 bindkey -a "L" vi-rev-repeat-search
+bindkey -a "k" vi-find-next-char-skip
+bindkey -a "K" vi-find-prev-char-skip
 
 # allow :w
 zle -A accept-line w
@@ -39,8 +44,10 @@ setopt ALWAYS_TO_END
 
 autoload -U compinit; compinit
 
-PROMPT='%(1j.%F{blue}[%j]%f.)[%F{cyan}%y%f][%F{green}%~%f]%(?..(%F{red}%?%f%))
-%B%n@%m %#%b '
+[ -z $HOST_COLOR ] && HOST_COLOR=white
+
+PROMPT="%(1j.%F{blue}[%j]%f.)[%F{cyan}%y%f][%F{green}%~%f]%(?..(%F{red}%?%f%))
+%B%n@%F{$HOST_COLOR}%m%f %#%b "
 
 [ "$USER" = "root" ] && [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ] && export CHROOT=yes
 

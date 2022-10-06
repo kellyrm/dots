@@ -25,3 +25,6 @@
 [submodule "emacs_pkg/orderless"]
 	path = emacs_pkg/orderless
 	url = https://github.com/oantolin/orderless
+[submodule "emacs_pkg/centered-window-mode"]
+	path = emacs_pkg/centered-window-mode
+	url = https://github.com/anler/centered-window-mode.git
