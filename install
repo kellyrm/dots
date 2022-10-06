@@ -41,8 +41,7 @@ INSTALL ".config/i3status/config"
 INSTALL ".lesskey"
 command -v lesskey && lesskey &> /dev/null
 
-INSTALL ".config/Code/User/settings.json"
-INSTALL ".config/Code/User/keybindings.json"
+INSTALL ".config/systemd/user/ssh-agent.service"
 
 INSTALL .emacs
 INSTALL_DIR emacs_pkg .emacs.d/pkg

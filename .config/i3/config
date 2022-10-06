@@ -10,7 +10,7 @@ set $right s
 hide_edge_borders both
 # font pango:SourceCodePro mono 10
 
-gaps inner 15
+# gaps inner 5
 default_border none
 
 # exec-always setxkbmap dvp -option caps:escape
@@ -19,7 +19,7 @@ exec "$HOME/bin/detect && sleep 1 && $HOME/.fehbg"
 exec which unclutter && unclutter &
 exec_always ~/.fehbg
 
-bindsym $mod+Tab move workspace to output right
+bindsym $mod+backslash  move workspace to output right
 bindsym $mod+Shift+m exec "$HOME/bin/detect"
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -52,10 +52,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec --no-startup-id $HOME/bin/graphical-term
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
