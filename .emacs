@@ -231,6 +231,9 @@
           (lambda ()
             (setq indent-tabs-mode t)))
 
+(setq c-default-style "bsd"
+      c-basic-offset 4)
+
                                         ; compile
 (defun window-by-name (buf-name)
   (if-let
