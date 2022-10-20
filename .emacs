@@ -35,6 +35,7 @@
   "-" nil
                                         ; dialogs
   "-f" 'gtags-find-tag
+  "-F" 'gtags-find-with-grep
   "-p" 'switch-to-buffer
   "-x" 'execute-extended-command
   "-y" 'find-file
