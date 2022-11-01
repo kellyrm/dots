@@ -34,6 +34,7 @@
                                         ; dash
   "-" nil
                                         ; dialogs
+  "-_" 'kill-secondary-buffers
   "-f" 'gtags-find-tag
   "-F" 'gtags-find-with-grep
   "-p" 'switch-to-buffer
@@ -260,7 +261,8 @@
   (interactive)
   (when-let ((project-shell (get-project-shell command (list (buffer-file-name)))))
     (compile project-shell)
-    (set-window-height (window-by-name "*compilation*") 25)))
+    ;;(set-window-height (window-by-name "*compilation*") 25)
+    ))
 
 (defun project-translate ()
   (interactive)
@@ -287,6 +289,12 @@
          (win (get-buffer-window buf)))
       (when (select-window win)
         (quit-window)))))
+
+(defun kill-secondary-buffers ()
+  (interactive)
+  (dolist (pat (list "^\*GTAGS SELECT\*.*"))
+    (kill-matching-buffers pat 't 't)))
+
 
 (defun secondary-window ()
   (interactive)
@@ -352,6 +360,9 @@
                                         ; vertico
 (require 'vertico)
 (vertico-mode)
+
+;; (setq evil-undo-system 'undo-redo)
+;; (setq evil-redo-function 'undo-redo)
 
                                         ; semantic
 ;; (require 'semantic)
