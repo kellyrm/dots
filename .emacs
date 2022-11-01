@@ -259,7 +259,8 @@
   (interactive)
   (when-let ((project-shell (get-project-shell command (list (buffer-file-name)))))
     (compile project-shell)
-    (set-window-height (window-by-name "*compilation*") 25)))
+                                        ;(set-window-height (window-by-name "*compilation*") 25)
+    ))
 
 (defun project-translate ()
   (interactive)
