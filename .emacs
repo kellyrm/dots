@@ -41,6 +41,7 @@
   "-x" 'execute-extended-command
   "-y" 'find-file
   "-Y" 'gtags-find-file
+  "-d" 'project-debug
 
   "-a" 'gtags-pop-stack
   "-e" 'next-error
@@ -48,6 +49,7 @@
   "-u" 'previous-error
 
   "-b" 'project-build
+  "-B" 'project-launch
   "-c" 'project-translate
   "-G" 'project-rebuild-tags
   "-r" 'project-rebuild
@@ -56,6 +58,24 @@
 
   "-[" 'select-refs
   "-]" 'version-control
+
+  "j" nil
+  "jj" 'evil-join
+  "jr" 'gud-refresh
+  "js" 'gud-step
+  "ji" 'gud-stepi
+  "jn" 'gud-next
+  "jp" 'gud-print
+  "jc" 'gud-cont
+  "jd" 'gud-remove
+  "jt" 'gud-tbreak
+  "ju" 'gud-up
+  "jd" 'gud-down
+  "jh" 'gud-until
+  "jf" 'gud-finish
+  "jJ" 'gud-jump
+  "jR" 'gud-run
+  (kbd "<RET>") 'gud-prev-expr
                                         ; editor commands
   "-i" 'indent-region
   "-k" 'kill-buffer
@@ -78,18 +98,22 @@
   (kbd "<SPC>t") 'evil-window-down
   (kbd "<SPC>n") 'evil-window-up
   (kbd "<SPC>s") 'evil-window-right
+  (kbd "<SPC>H") 'evil-move-window-left
+  (kbd "<SPC>T") 'evil-move-window-down
+  (kbd "<SPC>N") 'evil-move-window-up
+  (kbd "<SPC>S") 'evil-move-window-right
   (kbd "<SPC>q") 'delete-window
   (kbd "<SPC>Q") 'close-all-buffers
   (kbd "<SPC>v") 'evil-window-split
   (kbd "<SPC><RET>") 'evil-window-vsplit
   )
 
-
 (evil-define-key 'normal 'global
   "s" nil
   "S" nil)
 
-(setq minibuffer-message-timeout nil)
+(setq minibuffer-message-timeout nil
+      gud-keep-buffer 't)
 
 (defun reload-config ()
   (interactive)
@@ -119,6 +143,19 @@
   (interactive "p")
   (shrink-window (* 20 arg) 't))
 
+(defun evil-move-window-right ()
+  (interactive)
+  (evil-move-window 'right))
+(defun evil-move-window-left ()
+  (interactive)
+  (evil-move-window 'left))
+(defun evil-move-window-up ()
+  (interactive)
+  (evil-move-window 'up))
+(defun evil-move-window-down ()
+  (interactive)
+  (evil-move-window 'down))
+
 (defun select-from-project-list (name allow-multiple next)
   (when-let ((get-command (get-project-shell (format "get-list_%s" name) '()))
              (options (split-string (shell-command-to-string get-command))))
@@ -141,8 +178,9 @@
   (let ((shell-command 
          (get-project-shell cmd args)))
     (let ((result (shell-command-to-string shell-command))) 
-      (when use-minibuffer
-      (minibuffer-message result)))))
+      (if use-minibuffer
+          (minibuffer-message result)
+        result))))
 
 (defun modify-project-list (name allow-multiple use-minibuffer)
   (select-from-project-list
@@ -225,7 +263,7 @@
                                         ;tabs
 (setq-default
  indent-tabs-mode nil
- tab-always-indent 'complete
+ tab-always-indent 't
  tab-width 4)
 
 (standard-display-ascii ?\t "^...")
@@ -272,6 +310,10 @@
   (interactive)
   (project-shell-cmd "build"))
 
+(defun project-launch ()
+  (interactive)
+  (project-shell-cmd "launch"))
+
 (defun project-rebuild ()
   (interactive)
   (project-shell-cmd "rebuild"))
@@ -279,6 +321,10 @@
 (defun project-rebuild-tags()
   (interactive)
   (project-shell-cmd "rebuild-tags"))
+
+(defun project-debug()
+  (interactive)
+  (gud-gdb (do-project-command "debug" nil nil)))
 
 
 (defun kill-secondary-window ()
@@ -292,7 +338,7 @@
 
 (defun kill-secondary-buffers ()
   (interactive)
-  (dolist (pat (list "^\*GTAGS SELECT\*.*"))
+  (dolist (pat (list "^\*GTAGS SELECT\*.*" "^\*Completions\*.*"))
     (kill-matching-buffers pat 't 't)))
 
 
