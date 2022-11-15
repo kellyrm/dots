@@ -4,3 +4,5 @@ l   repeat-search
 L   reverse-search
 T   forw-screen
 N   back-screen
+S   forw-scroll
+H   back-scroll

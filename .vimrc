@@ -1,5 +1,3 @@
-" Set compatability to vim only
-set nocompatible
 " ==================
 " BINDINGS
 " ==================
@@ -21,10 +19,10 @@ noremap <C-W>S :winc L<Enter>
 noremap <C-W>t :winc J<Enter>
 noremap <C-W>n :winc K<Enter>
 " fast movement
-noremap H ^
+noremap H <C-U>
 noremap T <C-F>
 noremap N <C-B>
-noremap S $
+noremap S <C-D>
 " rebind search
 noremap l n
 noremap L N
