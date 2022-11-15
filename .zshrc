@@ -33,7 +33,7 @@ setopt AUTO_CD
 unsetopt MENU_COMPLETE
 unsetopt FLOWCONTROL
 
-setopt AUTO_NAME_DIRS
+# setopt AUTO_NAME_DIRS
 setopt AUTO_MENU
 setopt COMPLETE_IN_WORD
 setopt ALWAYS_TO_END
