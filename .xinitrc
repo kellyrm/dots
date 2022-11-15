@@ -35,6 +35,9 @@ fi
 # setxkbmap dvp
 # setxkbmap -option caps:escape
 
-udiskie &
+# udiskie &
 
-i3
+if [ -f $HOME/.config/local/xinitrc ] ; then
+    exec sh $HOME/.config/local/xinitrc
+fi
+
