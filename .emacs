@@ -1,5 +1,9 @@
                                         ; ======== PACKAGES =========
                                         ; package path
+
+;; void linux load path fix
+(normal-top-level-add-to-load-path '("/usr/share/gtags"))
+
 (let ((default-directory "~/.emacs.d/pkg/"))
   (normal-top-level-add-to-load-path
    '(
@@ -17,16 +21,24 @@
 (setq evil-search-wrap nil
       evil-regex-search t)
 
+(defun _evil-scroll-half-page-down ()
+  (interactive)
+  (evil-scroll-down 0))
+
+(defun _evil-scroll-half-page-up ()
+  (interactive)
+  (evil-scroll-up 0))
+
 (evil-define-key 'motion 'global
                                         ; dvorak rebinds
   "h" 'evil-backward-char
   "t" 'evil-next-line
   "n" 'evil-previous-line
   "s" 'evil-forward-char
-  "H" 'evil-first-non-blank
+  "H" '_evil-scroll-half-page-up
   "T" 'evil-scroll-page-down
   "N" 'evil-scroll-page-up
-  "S" 'evil-end-of-line
+  "S" '_evil-scroll-half-page-down
   "k" 'evil-find-char-to
   "K" 'evil-find-char-to-backward
   "l" 'evil-search-next
