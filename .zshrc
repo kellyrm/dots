@@ -1,6 +1,14 @@
 [ -f ~/.localenv ] && source ~/.localenv
 
-alias kty='i3-msg "exec --no-startup-id kitty -1 --instance-group i3 -d $(pwd)"'
+SSH_AGENT_ENV=$HOME/.config/ssh-agent.env
+source $SSH_AGENT_ENV > /dev/null
+
+if [ -z "$SSH_AGENT_PID" ] || ! pgrep -u `whoami` -x ssh-agent > /dev/null ; then
+    pgrep -u `whoami` -x ssh-agent | xargs kill -KILL 2&>1 > /dev/null
+    eval $(ssh-agent | tee $SSH_AGENT_ENV)
+fi
+
+alias kty='i3-msg "exec --no-startup-id kitty -1 --instance-group i3 group0 -d $(pwd)"'
 
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
