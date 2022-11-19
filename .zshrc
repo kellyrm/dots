@@ -12,6 +12,14 @@ alias st-prog="st-flash --format ihex write"
 
 export EDITOR=/usr/bin/vim
 
+bindkey -M viopp "h" vi-backward-char
+bindkey -M viopp "t" down-line-or-history
+bindkey -M viopp "n" up-line-or-history
+bindkey -M viopp "s" vi-forward-char
+bindkey -M viopp "l" vi-repeat-search
+bindkey -M viopp "L" vi-rev-repeat-search
+bindkey -M viopp "k" vi-find-next-char-skip
+bindkey -M viopp "K" vi-find-prev-char-skip
 bindkey -v
 bindkey -a "h" vi-backward-char
 bindkey -a "t" down-line-or-history
