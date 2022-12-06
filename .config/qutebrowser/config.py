@@ -19,6 +19,12 @@ config.load_autoconfig(False)
 ## Type: Dict
 c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'x': 'quit --save'}
 
+agent_spoofed_domains = ['office.com', 'microsoft.com', '*.microsoft.com']
+
+for pattern in agent_spoofed_domains:
+    with config.pattern(pattern) as p:
+        p.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0'
+
 ## Time interval (in milliseconds) between auto-saves of
 ## config/cookies/etc.
 ## Type: Int
@@ -802,7 +808,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## Expand each subframe to its contents. This will flatten all the frames
 ## to become one scrollable page.
 ## Type: Bool
-# c.content.frame_flattening = False
+# c.content.frame_flattening = True
 
 ## Set fullscreen notification overlay timeout in milliseconds. If set to
 ## 0, no overlay will be displayed.
@@ -864,6 +870,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## JavaScript requires a restart.
 ## Type: FormatString
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
+
 
 ## Enable hyperlink auditing (`<a ping>`).
 ## Type: Bool
@@ -1935,7 +1942,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 
 ## Force pinned tabs to stay at fixed URL.
 ## Type: Bool
-# c.tabs.pinned.frozen = True
+c.tabs.pinned.frozen = False
 
 ## Shrink pinned tabs down to their contents.
 ## Type: Bool
@@ -2234,11 +2241,11 @@ config.bind('L', 'search-prev')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
 config.bind('m', 'set-cmd-text -s :tab-select')
 # config.bind('gu', 'navigate up')
-config.bind('h', 'scroll left')
+config.bind('h', 'scroll-page -0.1 0')
 # config.bind('i', 'mode-enter insert')
-config.bind('t', 'scroll down')
-config.bind('n', 'scroll up')
-config.bind('s', 'scroll right')
+config.bind('t', 'scroll-page 0 +0.1')
+config.bind('n', 'scroll-page 0 -0.1')
+config.bind('s', 'scroll-page +0.1 0')
 # config.bind('m', 'quickmark-save')
 config.bind('l', 'search-next')
 # config.bind('o', 'set-cmd-text -s :open')
