@@ -2147,7 +2147,7 @@ config.bind('<Ctrl-6>', 'tab-focus 6')
 config.bind('<Ctrl-7>', 'tab-focus 7')
 config.bind('<Ctrl-8>', 'tab-focus 8')
 config.bind('<Ctrl-9>', 'tab-focus -1')
-# config.bind('<Alt-m>', 'tab-mute')
+config.bind('<Alt-m>', 'tab-mute')
 # config.bind('<Ctrl-A>', 'navigate increment')
 # config.bind('<Ctrl-Alt-p>', 'print')
 config.bind('N', 'scroll-page 0 -1')
@@ -2388,7 +2388,7 @@ config.bind('r', 'reload')
 # config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
 
 ## Bindings for passthrough mode
-# config.bind('<Shift-Escape>', 'mode-leave', mode='passthrough')
+config.bind('<Ctrl-Alt-Shift-Return>', 'mode-leave', mode='passthrough')
 
 ## Bindings for prompt mode
 # config.bind('<Alt-B>', 'rl-backward-word', mode='prompt')
