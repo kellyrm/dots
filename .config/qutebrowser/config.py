@@ -19,6 +19,12 @@ config.load_autoconfig(False)
 ## Type: Dict
 c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'x': 'quit --save'}
 
+agent_spoofed_domains = ['office.com', 'microsoft.com', '*.microsoft.com']
+
+for pattern in agent_spoofed_domains:
+    with config.pattern(pattern) as p:
+        p.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0'
+
 ## Time interval (in milliseconds) between auto-saves of
 ## config/cookies/etc.
 ## Type: Int
@@ -219,7 +225,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## Background color for hints. Note that you can use a `rgba(...)` value
 ## for transparency.
 ## Type: QssColor
-# c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
+c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 1), stop:1 rgba(255, 197, 66, 1))'
 
 ## Font color for hints.
 ## Type: QssColor
@@ -511,7 +517,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## `colors.webpage.darkmode.threshold.background` to 205.  - "With
 ## selective inversion of everything": Combines the two variants   above.
 ## Type: Bool
-# c.colors.webpage.darkmode.enabled = False
+c.colors.webpage.darkmode.enabled = False
 
 ## Render all colors as grayscale. This only has an effect when
 ## `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
@@ -802,7 +808,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## Expand each subframe to its contents. This will flatten all the frames
 ## to become one scrollable page.
 ## Type: Bool
-# c.content.frame_flattening = False
+# c.content.frame_flattening = True
 
 ## Set fullscreen notification overlay timeout in milliseconds. If set to
 ## 0, no overlay will be displayed.
@@ -864,6 +870,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## JavaScript requires a restart.
 ## Type: FormatString
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
+
 
 ## Enable hyperlink auditing (`<a ping>`).
 ## Type: Bool
@@ -1360,7 +1367,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
-# c.hints.chars = 'asdfghjkl'
+c.hints.chars = 'aoeuhtnspyidfg'
 
 ## Dictionary file to be used by the word hints.
 ## Type: File
@@ -1421,7 +1428,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 
 ## Make characters in hint strings uppercase.
 ## Type: Bool
-# c.hints.uppercase = False
+c.hints.uppercase = True
 
 ## Maximum time (in minutes) between two history items for them to be
 ## considered being from the same browsing session. Items with less time
@@ -1594,7 +1601,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## https://peter.sh/experiments/chromium-command-line-switches/ for a
 ## list) will work.
 ## Type: List of String
-# c.qt.args = []
+c.qt.args = ["webEngineArgs", "remote-debugging-port=9222"]
 
 ## When to use Chromium's low-end device mode. This improves the RAM
 ## usage of renderer processes, at the expense of performance.
@@ -1935,7 +1942,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 
 ## Force pinned tabs to stay at fixed URL.
 ## Type: Bool
-# c.tabs.pinned.frozen = True
+c.tabs.pinned.frozen = False
 
 ## Shrink pinned tabs down to their contents.
 ## Type: Bool
@@ -2234,11 +2241,11 @@ config.bind('L', 'search-prev')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
 config.bind('m', 'set-cmd-text -s :tab-select')
 # config.bind('gu', 'navigate up')
-config.bind('h', 'scroll left')
+config.bind('h', 'scroll-page -0.1 0')
 # config.bind('i', 'mode-enter insert')
-config.bind('t', 'scroll down')
-config.bind('n', 'scroll up')
-config.bind('s', 'scroll right')
+config.bind('t', 'scroll-page 0 +0.1')
+config.bind('n', 'scroll-page 0 -0.1')
+config.bind('s', 'scroll-page +0.1 0')
 # config.bind('m', 'quickmark-save')
 config.bind('l', 'search-next')
 # config.bind('o', 'set-cmd-text -s :open')

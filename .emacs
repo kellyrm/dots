@@ -45,7 +45,11 @@
   "L" 'evil-search-previous
                                         ; dash
   "-" nil
+  (kbd "<SPC>") nil
+  "j" nil
                                         ; dialogs
+
+  (kbd "- <SPC>") 'evil-write-all
   "-_" 'kill-secondary-buffers
   "-f" 'gtags-find-tag
   "-F" 'gtags-find-with-grep
@@ -71,7 +75,6 @@
   "-[" 'select-refs
   "-]" 'version-control
 
-  "j" nil
   "jj" 'evil-join
   "jb" 'gud-break
   "jr" 'gud-refresh
@@ -88,7 +91,7 @@
   "jf" 'gud-finish
   "jJ" 'gud-jump
   "jR" 'gud-run
-  (kbd "<RET>") 'gud-prev-expr
+  (kbd "j<RET>") 'gud-prev-expr
                                         ; editor commands
   "-i" 'indent-region
   "-k" 'kill-buffer
@@ -102,7 +105,6 @@
   "-l" 'smerge-next
   "-L" 'smerge-previous
                                         ; space
-  (kbd "<SPC>") nil
   (kbd "<SPC>u") 'add-window-lines
   (kbd "<SPC>d") 'remove-window-lines
   (kbd "<SPC>w") 'add-window-columns

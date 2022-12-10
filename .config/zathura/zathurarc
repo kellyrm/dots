@@ -8,8 +8,8 @@ map T scroll half-down
 map N scroll half-up
 map S scroll half-right
 
-map f scroll next
-map b scroll previous
+map l search forward
+map L search backward
 
 map i zoom in
 map o zoom out
