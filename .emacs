@@ -73,6 +73,7 @@
 
   "j" nil
   "jj" 'evil-join
+  "jb" 'gud-break
   "jr" 'gud-refresh
   "js" 'gud-step
   "ji" 'gud-stepi
@@ -187,6 +188,7 @@
       (funcall next selected))))
 
 (defun do-project-command (cmd use-minibuffer args)
+  "execute a project command synchronously. if use-minibuffer is specified, display the result, otherwise return it"
   (let ((shell-command 
          (get-project-shell cmd args)))
     (let ((result (shell-command-to-string shell-command))) 
@@ -337,7 +339,6 @@
 (defun project-debug()
   (interactive)
   (gud-gdb (do-project-command "debug" nil nil)))
-
 
 (defun kill-secondary-window ()
   (interactive)
