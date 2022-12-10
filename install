@@ -25,7 +25,7 @@ INSTALL_DIR() {
     fi
 }
 
-INSTALL ".xinitrc"
+# INSTALL ".xinitrc"
 INSTALL ".vimrc"
 INSTALL ".zshrc"
 INSTALL ".tmux.conf"
