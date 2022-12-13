@@ -25,7 +25,7 @@ INSTALL_DIR() {
     fi
 }
 
-INSTALL ".xinitrc"
+# INSTALL ".xinitrc"
 INSTALL ".vimrc"
 INSTALL ".zshrc"
 INSTALL ".tmux.conf"
@@ -34,6 +34,7 @@ INSTALL ".config/ranger/rc.conf"
 INSTALL ".config/kitty/kitty.conf"
 INSTALL ".config/picom/picom.conf"
 INSTALL ".config/zathura/zathurarc"
+INSTALL ".config/qutebrowser/config.py"
 
 GENERATE ".config/i3status/config"
 INSTALL ".config/i3status/config"

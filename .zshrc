@@ -1,6 +1,14 @@
 [ -f ~/.localenv ] && source ~/.localenv
 
-alias kty='i3-msg "exec --no-startup-id kitty -1 --instance-group i3 -d $(pwd)"'
+SSH_AGENT_ENV=$HOME/.config/ssh-agent.env
+source $SSH_AGENT_ENV > /dev/null
+
+if [ -z "$SSH_AGENT_PID" ] || ! pgrep -u `whoami` -x ssh-agent > /dev/null ; then
+    pgrep -u `whoami` -x ssh-agent | xargs kill -KILL 2&>1 > /dev/null
+    eval $(ssh-agent | tee $SSH_AGENT_ENV)
+fi
+
+alias kty='i3-msg "exec --no-startup-id kitty -1 --instance-group i3 group0 -d $(pwd)"'
 
 alias kssh="kitty +kitten ssh"
 alias sudo="sudo --preserve-env=TERMINFO"
@@ -12,6 +20,14 @@ alias st-prog="st-flash --format ihex write"
 
 export EDITOR=/usr/bin/vim
 
+bindkey -M viopp "h" vi-backward-char
+bindkey -M viopp "t" down-line-or-history
+bindkey -M viopp "n" up-line-or-history
+bindkey -M viopp "s" vi-forward-char
+bindkey -M viopp "l" vi-repeat-search
+bindkey -M viopp "L" vi-rev-repeat-search
+bindkey -M viopp "k" vi-find-next-char-skip
+bindkey -M viopp "K" vi-find-prev-char-skip
 bindkey -v
 bindkey -a "h" vi-backward-char
 bindkey -a "t" down-line-or-history
@@ -33,7 +49,7 @@ setopt AUTO_CD
 unsetopt MENU_COMPLETE
 unsetopt FLOWCONTROL
 
-setopt AUTO_NAME_DIRS
+# setopt AUTO_NAME_DIRS
 setopt AUTO_MENU
 setopt COMPLETE_IN_WORD
 setopt ALWAYS_TO_END

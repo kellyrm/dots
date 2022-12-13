@@ -1,5 +1,9 @@
                                         ; ======== PACKAGES =========
                                         ; package path
+
+;; void linux load path fix
+(normal-top-level-add-to-load-path '("/usr/share/gtags"))
+
 (let ((default-directory "~/.emacs.d/pkg/"))
   (normal-top-level-add-to-load-path
    '(
@@ -17,23 +21,35 @@
 (setq evil-search-wrap nil
       evil-regex-search t)
 
+(defun _evil-scroll-half-page-down ()
+  (interactive)
+  (evil-scroll-down 0))
+
+(defun _evil-scroll-half-page-up ()
+  (interactive)
+  (evil-scroll-up 0))
+
 (evil-define-key 'motion 'global
                                         ; dvorak rebinds
   "h" 'evil-backward-char
   "t" 'evil-next-line
   "n" 'evil-previous-line
   "s" 'evil-forward-char
-  "H" 'evil-first-non-blank
+  "H" '_evil-scroll-half-page-up
   "T" 'evil-scroll-page-down
   "N" 'evil-scroll-page-up
-  "S" 'evil-end-of-line
+  "S" '_evil-scroll-half-page-down
   "k" 'evil-find-char-to
   "K" 'evil-find-char-to-backward
   "l" 'evil-search-next
   "L" 'evil-search-previous
                                         ; dash
   "-" nil
+  (kbd "<SPC>") nil
+  "j" nil
                                         ; dialogs
+
+  (kbd "- <SPC>") 'evil-write-all
   "-_" 'kill-secondary-buffers
   "-f" 'gtags-find-tag
   "-F" 'gtags-find-with-grep
@@ -60,8 +76,8 @@
   "-[" 'select-refs
   "-]" 'version-control
 
-  "j" nil
   "jj" 'evil-join
+  "jb" 'gud-break
   "jr" 'gud-refresh
   "js" 'gud-step
   "ji" 'gud-stepi
@@ -76,7 +92,7 @@
   "jf" 'gud-finish
   "jJ" 'gud-jump
   "jR" 'gud-run
-  (kbd "<RET>") 'gud-prev-expr
+  (kbd "j<RET>") 'gud-prev-expr
                                         ; editor commands
   "-i" 'indent-region
   "-k" 'kill-buffer
@@ -90,7 +106,6 @@
   "-l" 'smerge-next
   "-L" 'smerge-previous
                                         ; space
-  (kbd "<SPC>") nil
   (kbd "<SPC>u") 'add-window-lines
   (kbd "<SPC>d") 'remove-window-lines
   (kbd "<SPC>w") 'add-window-columns
@@ -178,6 +193,7 @@
       (funcall next selected))))
 
 (defun do-project-command (cmd use-minibuffer args)
+  "execute a project command synchronously. if use-minibuffer is specified, display the result, otherwise return it"
   (let ((shell-command 
          (get-project-shell cmd args)))
     (let ((result (shell-command-to-string shell-command))) 
@@ -328,7 +344,6 @@
 (defun project-debug()
   (interactive)
   (gud-gdb (do-project-command "debug" nil nil)))
-
 
 (defun kill-secondary-window ()
   (interactive)
