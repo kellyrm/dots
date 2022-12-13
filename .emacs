@@ -42,6 +42,7 @@
   "-y" 'find-file
   "-Y" 'gtags-find-file
   "-d" 'project-debug
+  "-D" 'dired
 
   "-a" 'gtags-pop-stack
   "-e" 'next-error
@@ -111,6 +112,8 @@
 (evil-define-key 'normal 'global
   "s" nil
   "S" nil)
+
+(add-to-list 'auto-mode-alist '("\\.cs\\'" . c-mode))
 
 (setq minibuffer-message-timeout nil
       gud-keep-buffer 't)
