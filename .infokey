@@ -1,0 +1,26 @@
+#info
+gg beginning-of-node
+G  end-of-node
+
+t next-node
+n prev-node
+h up-node
+s top-node
+
+T scroll-forward-page-only
+N scroll-backward-page-only
+H scroll-half-screen-up
+S scroll-half-screen-down
+
+l  search-next
+L  search-previous
+
+^g abort-key
+^c abort-key
+
+' last-node
+
+f goto-node
+F goto-invocation-mode
+
+q quit
